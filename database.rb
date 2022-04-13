@@ -2,6 +2,11 @@
 # two type of countries that have opposite weather
 
 #winter in asia and europe and north america and middleeast are the same
+
+Class Database
+
+    def
+
 oceania = [:Australia, :'New Zealand', :Vanuatu]
 northamerica = [:US, :Mexico, :Canada, :'Puerto Rico', :'Bermuda', :'Virgin Island']   #winter December - March
 europe = [:Russia, :Germany, :UK, :France, :Italy, :Ukraine, :Romania, :Netherlands, :Belgium, :Greece, :Portugal, :Hungary, :Belarus, :Austria, :Serbia, :Bulgaria, :Norway, :Croatia, :Moldova, :Albania, :Luxembourg, :Ireland] #winter December - March
