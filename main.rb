@@ -11,21 +11,24 @@ loop do
     add_to_wishlist
     
     if $restart_or_end == "End"
-        if $wishlist != 0
-            delete
-        end
+        # if $wishlist != 0
+        #     delete
+        # end
         finish
         break       
     end
     
     if $answer2 == false
-        if $wishlist != 0
-            delete
-        end
+        # if $wishlist != 0
+        #     delete
+        # end
         finish
         break
+    else
+        start_over
     end
     
    
 end 
 
+delete

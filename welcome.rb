@@ -47,6 +47,8 @@ def add_to_wishlist
         $storage = $prompt.multi_select("Select Countries", countries_result)
         
         $wishlist = $wishlist.push($storage)
+        $wishlist.flatten!
+        
         $answer2 = $prompt.yes?("Would you like to add more countries with different time and season?")
     else
         $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.", %w(Restart End))
@@ -61,26 +63,67 @@ end
 
 
 def delete
-    deletequestion = $prompt.yes?("Would you like to remove any countries in your wishlist ?")
-    if deletequestion == true && $wishlist != 0
-        puts "Choose country to delete: "
-        deleteanswer = []
-        deleteanswer = $prompt.multi_select("Select Countries", $wishlist)
-        p "your delete answer is: #{deleteanswer}"
-        $wishlist = $wishlist.delete(deleteanswer)
-        # puts "Your updated wishlist is: "
-        # puts $wishlist
-    end
+    deletequestion = true
+    
+    while deletequestion != false
+        if deletequestion = $prompt.yes?("Would you like to remove any countries in your wishlist ?")
+        puts "Type in country to delete: "
+        deleteanswer = gets.chomp.to_sym
+        emptywishlist = $wishlist.length
+        puts "wishlist array length is: #{emptywishlist}"
+        p $wishlist
+        exist = $wishlist.include?(deleteanswer)
+
+            if emptywishlist != 1 && exist == true                  # IF deletequestion if TRUE, you have 3 options
+                $wishlist.delete(deleteanswer)                  # which are the IF, Elsif and Elsif    
+                puts "Your updated wishlist is: "
+                puts "==================================="
+                puts $wishlist
+                puts "wishlist array length is: #{emptywishlist}"
+                puts "==================================="
+
         
+
+            elsif exist == false
+                puts "Invalid entry / Country does not exist in wishlist!"
+            
+
+            elsif emptywishlist == 1
+            puts "Your wishlist is empty."
+            p $wishlist
+            puts "wishlist array length is: #{emptywishlist}"
+            return
+            end
+
+        elsif deletequestion == false                           # IF deletequestion is FALSE, abort
+            puts "I see.. you don't want to delete any. Exiting now!"
+        break
+        end
+    
+    end
 end
 
 
 def finish
-    puts "you have chosen to end"
     
+    puts "==================================="
     puts "Here are countries of your wishlist: "
+    puts ""
     puts $wishlist
-    puts "Good luck and hope we have helped you with your trip planning"
-    puts "Ciaoo!!"
+    puts ""
+    puts "==================================="
+    
 end
 
+def goodbye
+    puts "Thank you for using our service"
+    puts "Good luck with your future trip!"
+end
+
+
+
+
+
+
+# So far so good but
+you still need to : add country without double name 
