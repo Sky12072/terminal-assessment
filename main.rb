@@ -14,7 +14,7 @@ loop do
         # if $wishlist != 0
         #     delete
         # end
-        finish
+        # finish
         break       
     end
     
@@ -22,7 +22,8 @@ loop do
         # if $wishlist != 0
         #     delete
         # end
-        finish
+        # finish
+        delete
         break
     else
         start_over
@@ -31,4 +32,6 @@ loop do
    
 end 
 
-delete
+# delete
+finish
+goodbye
