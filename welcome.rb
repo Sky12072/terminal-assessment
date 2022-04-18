@@ -17,8 +17,13 @@ def welcome
     puts "==================================="
     puts "Welcome to Travel Country Selector"
     puts "==================================="
+    
+    if ARGV.empty? != true
+        $name = ARGV[0]
+    else
     puts "Enter your name: "
     $name = gets.chomp
+    end
     puts "Hi #{$name}, in order to assist you please select answer these questions:"
     puts ""
     
