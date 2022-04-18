@@ -1,8 +1,12 @@
 require "tty-prompt"
 require_relative "./welcome"
 require_relative './database'
+require "artii"
 
 prompt = TTY::Prompt.new
+
+a = Artii::Base.new 
+puts a.asciify('Travel Country Selector')
 
 welcome
 loop do
