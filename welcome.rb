@@ -21,43 +21,43 @@ def welcome
     $name = gets.chomp
     puts "Hi #{$name}, in order to assist you please select answer these questions:"
     puts ""
-    puts "dataresult class is: #{$dataresult.class}"
+    
 end
 
 def questions
-    # puts "dataresult class is: #{$dataresult.class}"
-    # puts "dataresult is empty? : #{$dataresult.empty?}"
+    
     seasoncheck = false
     while seasoncheck != true
         puts ""
         $month = $prompt.select("which month would you travel in?", %w(January February March April May June July August September October November December)) # filter 1
         $month = $month.downcase.to_sym
-        puts ""
-        $season = $prompt.select("Choose the seasons?", %w(Summer Winter Autumn Spring Tropicalcool Tropicalhot Tropicalrainy)) #filter2
-        $season = $season.downcase.to_sym 
-        puts ""
         
-
+        puts ""
+        $season = $prompt.select("Choose the seasons?") do |menu| 
+            menu.per_page 8
+            menu.choice "Summer"
+            menu.choice "Winter" 
+            menu.choice "Autumn"
+            menu.choice "Spring"
+            menu.choice "Tropical Cool"
+            menu.choice "Tropical Hot"
+            menu.choice "Tropical Rainy"
+            end
+        
+        $season = $season.downcase.to_sym 
+        puts ""       
+        
             
         seasoncheck = $data[$month].include?($season)            # returns true or false
-        
-        $dataresult = $data[$month][$season]
-
-
-        # puts "dataresult is empty? : #{$dataresult.empty?}"
-        # puts "dataresult class is: #{$dataresult.class}"
-        # puts "dataresult length is: #{$dataresult.length}"
-
-            
+        $dataresult = $data[$month][$season]            
 
         if seasoncheck == true
-            
             $activity = $prompt.select("Do you like indoor or outdoor activity?", %w(Indoor Outdoor)) # seperate additional results to add
             $activity.downcase!
-            
             puts ""
             return
         end
+
         puts "==================================="
         puts ""
         puts "Sorry, there are no countries available in that season. Please try other options."
@@ -88,8 +88,7 @@ end
 
 def add_to_wishlist
     answer1 = $prompt.yes?("Would you like to add any of these countries to a wish list ?")
-    # p answer1.class
-    # p answer1
+    
     if answer1 == true 
         puts "Please select countries you want to add to the wishlist"
         countries_result = $data[$month][$season]
@@ -108,9 +107,10 @@ def add_to_wishlist
         puts ""
     end
 end
-# $wishlist = $wishlist.push($storage)
+
+
 def start_over  
-    puts "you have chosen to start over"
+    puts "You have chosen to start over"
     puts ""
 end
 
@@ -122,6 +122,9 @@ def delete
             puts "==================================="
             puts "Countries in wishlist"
             puts ""
+            $wishlist.flatten!
+            $wishlist = $wishlist.to_set
+            $wishlist = $wishlist.to_a
             puts $wishlist
             puts "==================================="
             puts "Type in country to delete: "
