@@ -2,15 +2,23 @@ require "tty-prompt"
 require_relative "./welcome"
 require_relative './database'
 require "artii"
+require "tty-progressbar"
+require "colorize"
+require "pastel"
+
+pastel = Pastel.new
+green  = pastel.on_green(" ")
+red    = pastel.on_red(" ")
 
 prompt = TTY::Prompt.new
 
 a = Artii::Base.new 
-puts a.asciify('Travel Country Selector')
+puts a.asciify('Travel Country Selector').colorize(:yellow)
 
 welcome
 loop do
     questions
+    progressbar
     output  
     add_to_wishlist
     
