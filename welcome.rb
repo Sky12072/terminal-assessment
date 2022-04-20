@@ -1,9 +1,9 @@
-require_relative './database'
-require "tty-prompt"
-require 'set'
-require "tty-progressbar"
-require "colorize"
-require "pastel"
+# require_relative './database'
+# require "tty-prompt"
+# require 'set'
+# require "tty-progressbar"
+# require "colorize"
+# require "pastel"
 
 
 
@@ -26,9 +26,10 @@ def welcome
     if ARGV.empty? != true
         $name = ARGV[0]
     else
-    puts "Enter your name: ".light_blue
-    $name = gets.chomp.green
+        puts "Enter your name: ".light_blue
+        $name = gets.chomp.green
     end
+
     puts "Hi #{$name}, in order to assist you please select answer these questions:"
     puts ""
     
@@ -83,6 +84,7 @@ def output
     puts "The countries of chosen month and seasons are: ".light_green
     puts $dataresult
     puts ""
+
     if $activity == "outdoor"
         puts "Indoor activities ideas are:".light_green
         puts "Hiking"
@@ -97,9 +99,9 @@ def output
 end
 
 def add_to_wishlist
-    answer1 = $prompt.yes?("Would you like to add any of these countries to a wish list ?".light_blue)
+    addprompt = $prompt.yes?("Would you like to add any of these countries to a wish list ?".light_blue)
     
-    if answer1 == true 
+    if addprompt == true 
         puts "Please select countries you want to add to the wishlist".light_blue
         countries_result = $data[$month][$season]
        
@@ -109,8 +111,9 @@ def add_to_wishlist
         $wishlist = $wishlist.push($storage)
         $wishlist.flatten!
         
-        $answer2 = $prompt.yes?("Would you like to add more countries with different time and season?".light_blue)
+        $addmoreprompt = $prompt.yes?("Would you like to add more countries with different time and season?".light_blue)
         puts ""
+
     else
         $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.".light_blue, %w(Restart End))
         # and then create new method to continue the step to start over or end with finish msg and print wishlist result
@@ -119,10 +122,10 @@ def add_to_wishlist
 end
 
 
-def start_over  
-    puts "You have chosen to start over".light_green
-    puts ""
-end
+# def start_over  
+#     puts "You have chosen to start over".light_green
+#     puts ""
+# end
 
 
 def delete
@@ -224,7 +227,6 @@ def progressbar
     30.times do
         sleep(0.1)
         bar.advance  # by default increases by 1
-        
     end
 end
 

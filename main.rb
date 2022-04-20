@@ -26,11 +26,12 @@ loop do
         break       
     end
     
-    if $answer2 == false
+    if $addmoreprompt == false
         delete
         break
     else
-        start_over
+        puts "You have chosen to start over".light_green
+        puts ""
     end
 end 
 
