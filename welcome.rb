@@ -22,17 +22,23 @@ def welcome
     puts "==================================="
     puts "Welcome to Travel Country Selector".yellow
     puts "==================================="
-    
-    if ARGV.empty? != true
-        $name = ARGV[0]
-    else
-        puts "Enter your name: ".light_blue
-        $name = gets.chomp.green
-    end
+    $name = ""
+    while $name.empty? == true
+        if ARGV.empty? != true
+            $name = ARGV[0]
+        else
+            puts "Enter your name: ".light_blue
+            $name = gets.chomp
+        end
 
-    puts "Hi #{$name}, in order to assist you please select answer these questions:"
-    puts ""
-    
+        if $name.empty? == true
+            puts "Name can't be empty!".light_red
+        else
+            puts ""
+            puts "Hi #{$name.green}, in order to assist you please select answer these questions:"
+            puts ""
+        end
+    end
 end
 
 def questions
@@ -124,20 +130,12 @@ def add_to_wishlist
         $wishlist = $wishlist.push(storage)
         $wishlist.flatten!
         $wishlist = $wishlist.to_set
-        $wishlist = $wishlist.to_a
-        
-        
-        
-        
-        
-       
-           
+        $wishlist = $wishlist.to_a         
         
         $addmoreprompt = $prompt.yes?("Would you like to ADD MORE countries with different time and season?".light_blue)
         puts ""
             
             
-
     elsif addprompt != true 
             
         $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.".light_blue, %w(Restart End))

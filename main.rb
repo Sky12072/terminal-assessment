@@ -37,7 +37,6 @@ begin
 
             else
                 puts "Let's add more!".light_green
-                puts ""
             end
         
 
