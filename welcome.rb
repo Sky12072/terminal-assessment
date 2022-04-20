@@ -23,16 +23,17 @@ def welcome
     puts "Welcome to Travel Country Selector".yellow
     puts "==================================="
     $name = ""
-    while $name.empty? == true
+    whitespaces = /\s/
+    while $name.empty? == true 
         if ARGV.empty? != true
             $name = ARGV[0]
         else
             puts "Enter your name: ".light_blue
             $name = gets.chomp
         end
-
-        if $name.empty? == true
-            puts "Name can't be empty!".light_red
+        
+        if $name.empty? == true 
+            puts "Name can't be empty and letters only!".light_red
         else
             puts ""
             puts "Hi #{$name.green}, in order to assist you please select answer these questions:"

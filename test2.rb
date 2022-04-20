@@ -11,13 +11,9 @@
 # puts a.gsub(/\s+/, "")
 
 
-begin
-    puts "Enter your name: "
-    $name = gets.chomp
-    puts ""
-    puts "Hi #{$name}, in order to assist you please select answer these questions:"
-    puts $name.class
-rescue $name = "" 
-    puts "Name can't be empty"
-    retry
+# s =~ /\A\s*\Z/
+# puts s
+x = ""
+if not (x =~ /\S/) then
+    puts "It's all whitespace!"
 end
