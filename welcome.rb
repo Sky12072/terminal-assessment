@@ -44,7 +44,7 @@ def questions
         $month = $month.downcase.to_sym
         
         puts ""
-        $season = $prompt.select("Choose the seasons?".light_blue) do |menu| 
+        $season = $prompt.select("Choose the season?".light_blue) do |menu| 
             menu.per_page 8
             menu.choice "Summer"
             menu.choice "Winter" 
@@ -55,7 +55,9 @@ def questions
             menu.choice "Tropical Rainy"
             end
         
-        $season = $season.downcase.to_sym 
+        $season = $season.gsub(/\s+/, "")
+        $season = $season.downcase.to_sym
+        
         puts ""       
         
             
@@ -81,7 +83,7 @@ end
 
 def output
     puts ""
-    puts "The countries of chosen month and seasons are: ".light_green
+    puts "The countries of chosen month and season are: ".light_green
     puts $dataresult
     puts ""
 
@@ -99,26 +101,50 @@ def output
 end
 
 def add_to_wishlist
-    addprompt = $prompt.yes?("Would you like to add any of these countries to a wish list ?".light_blue)
     
-    if addprompt == true 
-        puts "Please select countries you want to add to the wishlist".light_blue
-        countries_result = $data[$month][$season]
-       
-        # store the selected countries
-        $storage = $prompt.multi_select("Select Countries".light_blue, countries_result)
-        # $wishlist << $storage
-        $wishlist = $wishlist.push($storage)
-        $wishlist.flatten!
+    addprompt = $prompt.yes?("Would you like to add any of these countries to a wish list ?".light_blue)
         
-        $addmoreprompt = $prompt.yes?("Would you like to add more countries with different time and season?".light_blue)
+    if addprompt == true
+        storage = []
+        while storage.empty? == true
+            
+            puts ""
+            puts "Please select countries you want to add to the wishlist".light_blue
+            countries_result = $data[$month][$season]
+                  
+            # store the selected countries
+            storage = $prompt.multi_select("Select Countries".light_blue, countries_result)
+            if storage.empty? == true
+                puts ""
+                puts "You have not selected any country. Please try again.".light_red
+            end
+            
+        end
+        # $wishlist << $storage
+        $wishlist = $wishlist.push(storage)
+        $wishlist.flatten!
+        $wishlist = $wishlist.to_set
+        $wishlist = $wishlist.to_a
+        
+        
+        
+        
+        
+       
+           
+        
+        $addmoreprompt = $prompt.yes?("Would you like to ADD MORE countries with different time and season?".light_blue)
         puts ""
+            
+            
 
-    else
+    elsif addprompt != true 
+            
         $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.".light_blue, %w(Restart End))
         # and then create new method to continue the step to start over or end with finish msg and print wishlist result
         puts ""
     end
+    
 end
 
 
@@ -130,7 +156,7 @@ end
 
 def delete
     deletequestion = true
-    while deletequestion != false
+    while deletequestion != false 
         if deletequestion = $prompt.yes?("Would you like to remove any countries in your wishlist ?".light_blue)
             puts "==================================="
             puts "Countries in wishlist".light_green
@@ -163,7 +189,7 @@ def delete
                 puts "Invalid entry / Country does not exist in wishlist!".light_red
                 puts ""
 
-            elsif emptywishlist == 1
+            elsif emptywishlist == 1 || $wishlist == 0
                 puts "Your wishlist is empty.".light_green
                 puts ""
                 puts $wishlist

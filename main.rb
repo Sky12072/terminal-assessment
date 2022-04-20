@@ -15,25 +15,38 @@ prompt = TTY::Prompt.new
 a = Artii::Base.new 
 puts a.asciify('Travel Country Selector').colorize(:yellow)
 
-welcome
-loop do
-    questions
-    progressbar
-    output  
-    add_to_wishlist
-    
-    if $restart_or_end == "End"
-        break       
-    end
-    
-    if $addmoreprompt == false
-        delete
-        break
-    else
-        puts "You have chosen to start over".light_green
-        puts ""
-    end
-end 
+begin
+    welcome
+    loop do
+        
+            questions
+            progressbar
+            output  
+            add_to_wishlist
+            
+            if $restart_or_end == "End"
+                break       
+            end
+            
+            if $addmoreprompt == false 
+                
+                delete
+                break
+            # elsif $wishlist == 0
 
-finish
-goodbye
+
+            else
+                puts "Let's add more!".light_green
+                puts ""
+            end
+        
+
+    end 
+
+
+    finish
+    goodbye
+rescue Interrupt
+    puts " - App terminated"
+
+end
