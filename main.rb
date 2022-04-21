@@ -19,33 +19,28 @@ begin
     welcome
     loop do
         
-            questions
-            progressbar
-            output  
-            add_to_wishlist
-            
-            if $restart_or_end == "End"
-                break       
-            end
-            
-            if $addmoreprompt == false 
-                
-                delete
-                break
-            # elsif $wishlist == 0
-
-
-            else
-                puts "Let's add more!".light_green
-            end
+        questions
+        progressbar
+        output  
+        add_to_wishlist
         
-
+        if $restart_or_end == "End"
+            break   
+        elsif $restart_or_end == "End" && $wishlist == 0
+            return
+         end
+                
+        if $addmoreprompt == false        
+            delete
+            break
+        else
+            puts "Let's do this!".light_green
+        end           
     end 
-
 
     finish
     goodbye
+
 rescue Interrupt
     puts " - App terminated"
-
 end

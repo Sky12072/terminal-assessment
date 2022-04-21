@@ -13,7 +13,24 @@
 
 # s =~ /\A\s*\Z/
 # puts s
-x = ""
-if not (x =~ /\S/) then
-    puts "It's all whitespace!"
+
+
+# x = ""
+# if not (x =~ /\S/) then
+#     puts "It's all whitespace!"
+# end
+
+
+
+array = [:Australia]
+puts array
+array.delete(:Australia)
+puts array 
+
+if array.empty? == true
+    puts "array is empty"
+    puts array
+else
+    puts "array is NOT empty"
+    puts array
 end
