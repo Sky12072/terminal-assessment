@@ -6,7 +6,7 @@ southeastasia = [:Cambodia, :Indonesia, :Malaysia, :Phillippines, :Singapore, :T
 middleeast = [:UAE, :Qatar, :Israel, :Turkey]              #winter December - March
 southernafrica = [:'South Africa'] #winter june - september
 northernafrica = [:Morocco]         #winter December - Feb
-#reorder hash by months and countries
+
 
 $data = {january: {winter: [northamerica, europe, asia, middleeast, northernafrica], summer: [oceania, southernafrica],tropicalcool: southeastasia}, 
     february: {winter: [northamerica, europe, asia, middleeast, northernafrica], summer: [oceania, southernafrica], tropicalcool: southeastasia},
@@ -22,13 +22,6 @@ $data = {january: {winter: [northamerica, europe, asia, middleeast, northernafri
     december: {winter: [northamerica, europe, asia, middleeast, northernafrica], summer: [oceania, southernafrica], tropicalcool: southeastasia},
 }
 
-# $month = prompt.select("which month would you travel in?", %w(january February March April May June July August September October November December)) # filter 1
-# $month = $month.to_sym
-# p $month.class
-# $season = prompt.select("Choose the seasons?", %w(summer Winter Autumn Fall)) #filter2
-# $season = $season.to_sym 
-# p $season.class
-# puts $data[$month][$season]
 
 
 

@@ -9,13 +9,6 @@ require "pastel"
 
 $prompt = TTY::Prompt.new
 
-# create global variable of country result so it can be accessed by different methods
-# $countries_result = []
-# $wishlist = []
-# $month = ""
-# $season = ""
-# $activity = ""
-# $wishlist = Set.new
 $wishlist =[]
 $dataresult =[]
 
@@ -24,7 +17,7 @@ def nameinput
     puts "Welcome to Travel Country Selector".yellow
     puts "==================================="
     $name = ""
-    whitespaces = /\s/
+    
     while $name.empty? == true 
         if ARGV.empty? != true                                      # Takes input either from command line or gets
             $name = ARGV[0]
@@ -78,9 +71,9 @@ def questions
         seasoncheck = $data[$month].include?($season)           # calling the month and season from data and then returns true or false
         $dataresult = $data[$month][$season]                    # calling the month and season from data and then returns the countries
 
-        if seasoncheck != true                                       # if the country chosen exist in data, break the loop and go to next method
-                                                    # if the country chosen does not exist in data, continue to next step which is print
-        puts "==================================="  # no countries available go back to start of loop.
+        if seasoncheck != true                                      
+                                                    
+        puts "==================================="  
         puts ""
         puts "Sorry, there are no countries available in that season. Please try other options.".light_red
         puts ""
@@ -89,14 +82,6 @@ def questions
     end
 end
 
-def indoor_outdoor
-    if $wishlist.empty? != true
-        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)).light_blue # seperate additional results to add
-        $activity.downcase!
-        puts ""
-    end
-        
-end
 
 def output
     puts ""
@@ -226,9 +211,18 @@ def delete
     end
 end
 
+def indoor_outdoor
+    if $wishlist.empty? != true
+        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)).light_blue # seperate additional results to add
+        $activity.downcase!
+        puts ""
+    end
+        
+end
+
 
 def finish
-    # puts "wishlist is empty? : #{$wishlist.empty?}"
+   
     finishprompt = $wishlist.empty?
     if finishprompt == false
         puts "==================================="
@@ -238,12 +232,12 @@ def finish
         $wishlist = $wishlist.to_set
         $wishlist = $wishlist.to_a
         
-        # puts "wishlist array length is: #{$wishlist}"
+        
         puts $wishlist
         puts ""
         puts "==================================="
         puts ""
-        if $activity =="outdoor"
+        if $activity = "outdoor"
             puts "Outdoor activities ideas are:".light_green
             puts "Hiking"
             puts "Sightseeing"
@@ -275,6 +269,7 @@ def finish
     
 end
 
+
 def goodbye
     puts ""
     puts "Thank you, #{$name} for using our service.".yellow
@@ -288,7 +283,7 @@ def progressbar
     pastel = Pastel.new
     green  = pastel.on_green(" ")
     red    = pastel.on_red(" ")
-    bar = TTY::ProgressBar.new("Getting data [:bar] :percent", bar_format: :block, total: 30, complete: green)
+    bar = TTY::ProgressBar.new("Compiling [:bar] :percent", bar_format: :block, total: 30, complete: green)
     
     30.times do
         sleep(0.1)

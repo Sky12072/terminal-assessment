@@ -39,6 +39,7 @@ begin
         end           
     end 
     indoor_outdoor
+    progressbar
     finish
     goodbye
 

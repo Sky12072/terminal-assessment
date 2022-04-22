@@ -1,5 +1,5 @@
 # Travel Country Selector
-This app is an app that helps users to decide their travel destination based on seasons in certain months.
+A scenary of a mountain or country could look very different with each of its beauty. This app is an app that helps users to decide their travel destination based on particular seasons in certain months. The users will be able to select their favourite countries and save them in a wishlist for their further research or simply their final decision. Additionally, the app also suggest activity ideas for indoor or outdoor for travel inspiration. 
 
 ## Github link
 
