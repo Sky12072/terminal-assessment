@@ -1,4 +1,4 @@
-
+# require 'rspec/autorun'
 require_relative '../methods'
 
 
