@@ -1,5 +1,5 @@
 require "tty-prompt"
-require_relative "./welcome"
+require_relative "./methods"
 require_relative './database'
 require "artii"
 require "tty-progressbar"
@@ -16,19 +16,20 @@ a = Artii::Base.new
 puts a.asciify('Travel Country Selector').colorize(:yellow)
 
 begin
-    welcome
+    
+    greetings(nameinput)
     loop do
         
         questions
         progressbar
-        output  
+        output
+
         add_to_wishlist
         
         if $restart_or_end == "End"
             break   
-        elsif $restart_or_end == "End" && $wishlist == 0
-            return
-         end
+        
+        end
                 
         if $addmoreprompt == false        
             delete
@@ -37,7 +38,7 @@ begin
             puts "Let's do this!".light_green
         end           
     end 
-
+    indoor_outdoor
     finish
     goodbye
 

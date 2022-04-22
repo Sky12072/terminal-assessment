@@ -22,15 +22,23 @@
 
 
 
-array = [:Australia]
-puts array
-array.delete(:Australia)
-puts array 
+# array = [:Australia]
+# puts array
+# array.delete(:Australia)
+# puts array 
 
-if array.empty? == true
-    puts "array is empty"
-    puts array
-else
-    puts "array is NOT empty"
-    puts array
+# if array.empty? == true
+#     puts "array is empty"
+#     puts array
+# else
+#     puts "array is NOT empty"
+#     puts array
+# end
+
+
+def goodbye(name)
+    puts ""
+    puts "Thank you, #{name} for using our service."
+    puts "Good luck with your future trip!"
+    puts ""
 end

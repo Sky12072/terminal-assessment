@@ -1,13 +1,14 @@
-# require_relative './database'
-# require "tty-prompt"
-# require 'set'
-# require "tty-progressbar"
-# require "colorize"
-# require "pastel"
+require_relative './database'
+require "tty-prompt"
+require 'set'
+require "tty-progressbar"
+require "colorize"
+require "pastel"
 
 
 
 $prompt = TTY::Prompt.new
+
 # create global variable of country result so it can be accessed by different methods
 # $countries_result = []
 # $wishlist = []
@@ -18,7 +19,7 @@ $prompt = TTY::Prompt.new
 $wishlist =[]
 $dataresult =[]
 
-def welcome
+def nameinput
     puts "==================================="
     puts "Welcome to Travel Country Selector".yellow
     puts "==================================="
@@ -30,16 +31,22 @@ def welcome
         else
             puts "Enter your name: ".light_blue
             $name = gets.chomp
+            
         end
         
         if $name.empty? == true 
-            puts "Name can't be empty and letters only!".light_red
-        else
-            puts ""
-            puts "Hi #{$name.green}, in order to assist you please select answer these questions:"
-            puts ""
+            puts "Name can't be empty!".light_red
+        else 
+            return $name
         end
     end
+end
+
+def greetings(nameinput)
+    puts ""
+    puts "Hi #{nameinput}, in order to assist you please select answer these questions:"
+    puts ""
+    return nameinput
 end
 
 def questions
@@ -71,22 +78,25 @@ def questions
         seasoncheck = $data[$month].include?($season)           # calling the month and season from data and then returns true or false
         $dataresult = $data[$month][$season]                    # calling the month and season from data and then returns the countries
 
-        if seasoncheck == true
-            $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)).light_blue # seperate additional results to add
-            $activity.downcase!
-            puts ""
-            return
-        end                                         # if the country chosen exist in data, break the loop and go to next method
+        if seasoncheck != true                                       # if the country chosen exist in data, break the loop and go to next method
                                                     # if the country chosen does not exist in data, continue to next step which is print
         puts "==================================="  # no countries available go back to start of loop.
         puts ""
         puts "Sorry, there are no countries available in that season. Please try other options.".light_red
         puts ""
         puts "==================================="
+        end
     end
 end
 
-
+def indoor_outdoor
+    if $wishlist.empty? != true
+        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)).light_blue # seperate additional results to add
+        $activity.downcase!
+        puts ""
+    end
+        
+end
 
 def output
     puts ""
@@ -115,11 +125,12 @@ def add_to_wishlist
                     puts "You have not selected any country. Please try again.".light_red
                 end
             end
+
             begin 
                 # This is to prevent double names of country in storage if user selected twice of the same country name
                 $wishlist = $wishlist.push(storage)         # add chosen countries to wishlist
                 $wishlist.flatten!                          # combine multiple arrays into one array    
-                $wishlist = $wishlist.to_set                # parse from array to set to avoid double country names
+                $wishlist = $wishlist.to_set               # parse from array to set to avoid double country names
                 $wishlist = $wishlist.to_a                  # parse wishlist into array
             rescue TypeError
                 puts "Wrong data type"
@@ -128,6 +139,7 @@ def add_to_wishlist
             rescue SyntaxError
                 puts "Wrong Syntax"
             end
+
             $addmoreprompt = $prompt.yes?("Would you like to ADD MORE countries with different time and season?".light_blue)
             puts ""
             
@@ -207,7 +219,7 @@ def delete
 
         elsif deletequestion == false                           # IF deletequestion is FALSE, abort
             puts ""
-            puts "I see.. you don't want to delete any. Exiting now!".light_green
+            puts "The last bit!".light_green
             puts ""            
             
         end

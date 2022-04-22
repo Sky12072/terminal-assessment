@@ -59,3 +59,98 @@ middleeast = ["UAE", "Qatar", "Israel", "Turkey"]              #winter December 
 southernafrica = ["South Africa"] #winter june - september
 northernafrica = ["Morocco"]         #winter December - Feb
 #reorder hash by months and countries
+
+
+
+
+def delete
+    deletequestion = ""
+    # if deletequestion == true
+    while deletequestion != "n"
+    # deletequestion = $prompt.yes?("Would you like to remove any countries in your wishlist ?")
+    puts "Would you like to remove any countries in your wishlist ?"
+    puts "Press (y)yes to procees, press '(n)no to abort"
+    deletequestion = gets.chomp
+    p "deletequestion class is: #{deletequestion.class}"
+        if deletequestion != "n" && $wishlist != 0 && $wishlist.include?(deleteanswer)
+        puts "Type in country to delete: "
+        deleteanswer = gets.chomp.to_sym                # take the input
+        puts "==================================="
+        puts ""
+
+        # if answer matched with wishlist
+        $wishlist.delete(deleteanswer)
+        puts "Your updated wishlist is: "
+        puts "==================================="
+        puts $wishlist
+        puts "==================================="
+               
+        elsif deleteanswer == "n"
+        puts "I see..,you don't want to delete any"
+        break
+    
+        elsif $wishlist == 0
+        puts "Your wishlist is empty."
+
+        else
+        puts "Invalid entry / Country does not exist in wishlist!"
+        puts ""
+        end
+    end
+end
+
+
+welcome
+loop do
+    questions
+    output  
+    add_to_wishlist
+    
+    if $restart_or_end == "End"
+        break       
+    end
+    
+    if $answer2 == false
+        delete
+        break
+    else
+        start_over
+    end
+end 
+
+finish
+goodbye
+
+
+
+
+
+welcome
+loop do
+    questions
+    output  
+    add_to_wishlist
+    
+    if $restart_or_end == "End"
+        # if $wishlist != 0
+        #     delete
+        # end
+        # finish
+        break       
+    end
+    
+    if $answer2 == false
+        # if $wishlist != 0
+        #     delete
+        # end
+        # finish
+        delete
+        break
+    else
+        start_over
+    end
+end 
+
+# delete
+finish
+goodbye
