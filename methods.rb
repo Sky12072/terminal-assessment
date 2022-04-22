@@ -19,8 +19,13 @@ def nameinput
     $name = ""
     
     while $name.empty? == true 
-        if ARGV.empty? != true                                      # Takes input either from command line or gets
+        if ARGV.empty? != true && ARGV[0] != "help"                                     # Takes input either from command line or gets
             $name = ARGV[0]
+        elsif ARGV.empty? != true && ARGV[0] == "help"    
+            puts ""
+            puts File.read('./help.txt')
+            puts ""
+            exit
         else
             puts "Enter your name: ".light_blue
             $name = gets.chomp
@@ -118,32 +123,27 @@ def add_to_wishlist
                 $wishlist = $wishlist.to_set               # parse from array to set to avoid double country names
                 $wishlist = $wishlist.to_a                  # parse wishlist into array
             rescue TypeError
-                puts "Wrong data type"
+                puts "Wrong data type - line 116 to 119"
             rescue NameError
-                puts "Wrong name"
+                puts "Wrong name - line 116 to 119"
             rescue SyntaxError
-                puts "Wrong Syntax"
+                puts "Wrong Syntax - line 116 to 119"
             end
 
-            $addmoreprompt = $prompt.yes?("Would you like to ADD MORE countries with different time and season?".light_blue)
+            $addmoreprompt = $prompt.yes?("Would you like to ADD MORE countries with different time and season?".light_blue) # variable is used in main.rb
             puts ""
             
 
         elsif addprompt != true             # if user does not want to add countries, choose end or restart
                 
-            $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.".light_blue, %w(Restart End))
-            # and then create new method to continue the step to start over or end with finish msg and print wishlist result
+            $restart_or_end = $prompt.select("choose 'restart' to start over or to finish choose 'end'.".light_blue, %w(Restart End)) # variable is used in main.rb
+            # This then create new method to continue the step to start over or end with finish msg and print wishlist result
             puts ""
         end
 
     
 end
 
-
-# def start_over  
-#     puts "You have chosen to start over".light_green
-#     puts ""
-# end
 
 
 def delete
@@ -165,16 +165,18 @@ def delete
                 
             begin 
                 
-                deleteanswer = gets.chomp.to_sym       # takes user input and convert to symbol, test if user type with lowercase too!
+                deleteanswer = gets.chomp.to_sym       # takes user input and convert to symbol, test if user type with lowercase too   
                     
-                $emptywishlist = $wishlist.length       # search wishlist if empty or not, by length and store it to emptywishlist
-                                                            # but remember, whatever stored in emptywishlist does not get modified when wishlist is modified!    
-                    
-                exist = $wishlist.include?(deleteanswer)            #search if user input(deletequestion) exist in the wishlist
-                    
+                exist = $wishlist.include?(deleteanswer)            #search if user input(deletequestion) exist in the wishlist                    
                     
             rescue NoMethodError
-                puts "Method error"
+                puts "Method error - line 163 to 165"
+            rescue TypeError
+                puts "Wrong data type - line 163 to 165"
+            rescue NameError
+                puts "Wrong name - line 163 to 165"
+            rescue SyntaxError
+                puts "Wrong Syntax - line 163 to 165"
             end
 
             if exist == true                  # IF deletequestion if TRUE, you have 2 options
@@ -237,8 +239,9 @@ def finish
         puts ""
         puts "==================================="
         puts ""
-        if $activity = "outdoor"
-            puts "Outdoor activities ideas are:".light_green
+        puts "outdoor or indoor is: #{$activity}"
+        if $activity == "outdoor"
+            puts "Outdoor activity ideas are:".light_green
             puts "Hiking"
             puts "Sightseeing"
             puts "Carnival"
@@ -246,8 +249,8 @@ def finish
             puts "Events"
             puts ""
     
-        elsif $activity = "indoor"
-            puts "Indoor activities ideas are:".light_green
+        elsif $activity == "indoor"
+            puts "Indoor activity ideas are:".light_green
             puts "Fashion shopping"
             puts "Restaurants"
             puts "Souvenir"

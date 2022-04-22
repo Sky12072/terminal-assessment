@@ -1,0 +1,14 @@
+Hi future traveler!
+
+Feeling lost how to use this app?
+Glad you asked for a help, this document is here for you when needed.
+
+A scenary of a mountain or country could look very different with each of its beauty. 
+This app is an app that helps users to decide their travel destination based on particular seasons in certain months. 
+The users will be able to select their favourite countries and save them in a wishlist for their further research or simply their final decision. 
+Additionally, the app also suggest activity ideas for indoor or outdoor for travel inspiration. 
+
+In the database, there are 48 most travelled countries accross 8 continents and seasons of each month within the year. 
+
+I really hope this app will help you to narrow down which country best to travel that is more suitable time and preferred season.
+Good luck and bon voyage!
