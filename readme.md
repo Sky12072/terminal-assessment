@@ -120,6 +120,9 @@ Screen Shot 2022-04-21 at 3.01.51 pm
 Screen Shot 2022-04-23 at 1.02.49 am
 ![Trello15](trello/Screenshot15.png)
 
+Screen Shot 2022-04-23 at 1.49.06 pm
+![Trello16](trello/Screenshot16.png)
+
 ## Installation and How to use this app
 
 The app is very user friendly. The user simply to follow the prompts in every step of the way in order to achieve the outcome. At the end of the app, the user will be presented the result of a wishlist that contains list of favourite countries chosen by the user. 
@@ -144,8 +147,8 @@ Gems used for this application are:
 Command line arguments are special feature which only executes when you type a special keyword next to ruby execution keyword (`ruby main.rb`).
 
 Available command line arguments are:
-- Starting up the app with your name: `ruby main.rb Tim`
-- Display 'about app' documentation: `ruby main.rb -about`
+- Starting up the app with your name: `ruby main.rb [your name]`. For example `ruby main.rb Tim` 
+- Display 'about app' documentation: `-about`. For example `ruby main.rb -about`
 
 ## List of Methods
 
