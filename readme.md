@@ -25,8 +25,13 @@ Within the 'questions' method, while-loop is used to loop over - 'as long as cou
 - The user also will be able to save their favourite countries in to a wish list.
 This feature uses 'add_to_wishlist' method. Within this method, while-loop is used to iterate select countries for wishlist-question if user selects nothing. Variable scope used such as 'countries_result' to add multiple countries in a storage. Global variable '$wishlist' is used to share information to other methods needed. Error handling is used specifically in this method to identify data-type conversion error. 
 
+Conditional structures used if the user decided not to add wishlist the user will be prompt to restart or finish the program otherwise continues to add countries to wishlist.
+After adding countries to wishlist, the user will be again prompt to add another or not, if yes continues and if no the program will move on to the next deletion feature.
+
 3. Deletion
 - The user will be able to delete countries in their wishlist if they prefer to. In the 'delete' method, while-loop is used with purpose, as long as user choose to delete, the app will keep re-confirming if the user would like to delete another country until the user decided not to and variable scope 'deletequestion' is used for this purpose. This method also contains global variable '$wishlist' to retrieve information from the 'add_to_wishlist' method. Error handling is used specifically in this method to identify data-type conversion error. 
+
+Conditional structures used if the user decided not to delete, it will take the user to travel activity question and if the user decides to delete, the program execute and then it will prompt if the user wants to delete another if there is still at least one country in the wishlist.
 
 The user will be able to start over and repeat the first steps or end the app if they are done.
 
