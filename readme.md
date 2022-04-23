@@ -140,7 +140,7 @@ Command line arguments are special feature which only executes when you type a s
 
 Available command line arguments are:
 - Starting up the app with your name: `ruby main.rb Tim`
-- Display help documentation: `ruby main.rb help`
+- Display 'about app' documentation: `ruby main.rb -about`
 
 ## List of Methods
 

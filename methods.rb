@@ -19,11 +19,11 @@ def nameinput
     $name = ""
     
     while $name.empty? == true 
-        if ARGV.empty? != true && ARGV[0] != "help"                                     # Takes input either from command line or gets
+        if ARGV.empty? != true && ARGV[0] != "-about"                                     # Takes input either from command line or gets
             $name = ARGV[0]
-        elsif ARGV.empty? != true && ARGV[0] == "help"    
+        elsif ARGV.empty? != true && ARGV[0] == "-about"    
             puts ""
-            puts File.read('./help.txt')
+            puts File.read('./about.txt')
             puts ""
             exit
         else
