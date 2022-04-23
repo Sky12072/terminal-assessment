@@ -215,8 +215,7 @@ end
 
 def indoor_outdoor
     if $wishlist.empty? != true
-        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)).light_blue # seperate additional results to add
-        $activity.downcase!
+        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)) # seperate additional results to add
         puts ""
     end
         
@@ -239,8 +238,9 @@ def finish
         puts ""
         puts "==================================="
         puts ""
-        puts "outdoor or indoor is: #{$activity}"
-        if $activity == "outdoor"
+        
+        case $activity
+        when "Outdoor"
             puts "Outdoor activity ideas are:".light_green
             puts "Hiking"
             puts "Sightseeing"
@@ -249,7 +249,7 @@ def finish
             puts "Events"
             puts ""
     
-        elsif $activity == "indoor"
+        when "Indoor"
             puts "Indoor activity ideas are:".light_green
             puts "Fashion shopping"
             puts "Restaurants"
@@ -262,8 +262,6 @@ def finish
     else
         puts "==================================="
         puts ""
-        
-        # puts "wishlist array length is: #{$wishlist}"
         puts "Your wishlist is empty.".light_green    
         puts ""
         puts "==================================="

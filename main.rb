@@ -21,7 +21,7 @@ begin
     loop do
         
         questions
-        progressbar
+        # progressbar
         output
 
         add_to_wishlist
@@ -39,7 +39,7 @@ begin
         end           
     end 
     indoor_outdoor
-    progressbar
+    # progressbar
     finish
     goodbye
 
