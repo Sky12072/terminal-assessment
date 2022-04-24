@@ -38,6 +38,7 @@ begin
             puts "Let's do this!".light_green
         end           
     end 
+    
     indoor_outdoor(indoor_outdoor_prompt)    
     goodbye
 

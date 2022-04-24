@@ -223,10 +223,10 @@ end
 
 
 
-def indoor_outdoor(activity)
+def indoor_outdoor(activity)        # retrieve activity value from indoor_outdoor_prompt method
     
     puts ""
-    finish
+    finish                  # execute finish method
 case activity
     
     when "Outdoor"
