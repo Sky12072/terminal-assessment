@@ -21,7 +21,7 @@ begin
     loop do
         
         questions
-        # progressbar
+        progressbar
         output
 
         add_to_wishlist
@@ -38,9 +38,7 @@ begin
             puts "Let's do this!".light_green
         end           
     end 
-    indoor_outdoor
-    # progressbar
-    finish
+    indoor_outdoor(indoor_outdoor_prompt)    
     goodbye
 
 rescue Interrupt

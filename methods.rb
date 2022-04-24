@@ -213,12 +213,37 @@ def delete
     end
 end
 
-def indoor_outdoor
+def indoor_outdoor_prompt
     if $wishlist.empty? != true
-        $activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)) # seperate additional results to add
+        activity = $prompt.select("Do you like indoor or outdoor activity?".light_blue, %w(Indoor Outdoor)) # seperate additional results to add
         puts ""
+        return activity
     end
+end
+
+
+
+def indoor_outdoor(activity)
+    progressbar
+    puts ""
+    finish
+case activity
+    when "Outdoor"
+        outdoor = ["Hiking", "Sightseeing", "Carnival", "Landmarks", "Events"]
+
+        puts "Outdoor activity ideas are:".light_green
+        puts outdoor
+        puts ""
+        return outdoor
         
+    when "Indoor"
+        indoor = ["Fashion shopping", "Restaurants", "Souvenir", "Bakery", "Nightlife"]
+        puts "Indoor activity ideas are:".light_green
+        
+        puts indoor
+        puts ""
+        return indoor
+    end
 end
 
 
@@ -239,25 +264,6 @@ def finish
         puts "==================================="
         puts ""
         
-        case $activity
-        when "Outdoor"
-            puts "Outdoor activity ideas are:".light_green
-            puts "Hiking"
-            puts "Sightseeing"
-            puts "Carnival"
-            puts "Landmarks"
-            puts "Events"
-            puts ""
-    
-        when "Indoor"
-            puts "Indoor activity ideas are:".light_green
-            puts "Fashion shopping"
-            puts "Restaurants"
-            puts "Souvenir"
-            puts "Bakery"
-            puts "Nightlife"
-            puts ""
-        end
 
     else
         puts "==================================="
@@ -276,6 +282,7 @@ def goodbye
     puts "Thank you, #{$name} for using our service.".yellow
     puts "Good luck with your future trip!".yellow
     puts ""
+    
 end
 
 
