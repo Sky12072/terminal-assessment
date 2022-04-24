@@ -224,13 +224,14 @@ end
 
 
 def indoor_outdoor(activity)
-    progressbar
+    
     puts ""
     finish
 case activity
+    
     when "Outdoor"
         outdoor = ["Hiking", "Sightseeing", "Carnival", "Landmarks", "Events"]
-
+        
         puts "Outdoor activity ideas are:".light_green
         puts outdoor
         puts ""
@@ -238,6 +239,7 @@ case activity
         
     when "Indoor"
         indoor = ["Fashion shopping", "Restaurants", "Souvenir", "Bakery", "Nightlife"]
+        
         puts "Indoor activity ideas are:".light_green
         
         puts indoor
